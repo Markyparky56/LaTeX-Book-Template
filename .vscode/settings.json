@@ -1,0 +1,116 @@
+{
+  "editor.wordWrap": "on",
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext"
+  ],
+  "ltex.language": "en-GB",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk 🔃",
+      "tools": [
+        "latexmk"
+      ]
+    },
+    {
+      "name": "tex4ebook-epub",
+      "tools": [
+        "epub",
+        "make4ht-clean"
+      ]
+    },
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "lualatexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-lualatex",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "latexmk_rconly",
+      "command": "latexmk",
+      "args": [
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "epub",
+      "command": "tex4ebook",
+      "args": [
+        "-s",
+        "-t",        
+        "-c",
+        "ebook.cfg",
+        "-f",
+        "epub3",
+        "--output-dir",
+        "%DOC%-epub3",
+        "%DOC_EXT%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "make4ht-clean",
+      "command": "make4ht",
+      "args": [
+        "-m", "clean", "%DOC_EXT%"
+      ],
+      "env": {}
+    }
+  ],
+  "grammarly.selectors": [
+    {
+      "language": "latex",
+      "scheme": "file"
+    }
+  ],
+  "grammarly.config.documentDomain": "creative",
+  "grammarly.config.documentDialect": "british"
+}

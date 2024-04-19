@@ -1,0 +1,13 @@
+.vscode/spellright.dict
+*.toc
+*.synctex.gz
+*.log
+*.fls
+*.fdb_latexmk
+*.aux
+*.docx
+*-epub3/*
+*-mobi/*
+*.mobi
+content.opf
+

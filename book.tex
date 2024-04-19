@@ -1,0 +1,133 @@
+%%% Document Class
+\documentclass[
+  11pt,       % Type size
+  twoside,    % Print both sides
+  openright   % Chapters start on the right, odd pages
+]{memoir}
+
+%%% Page Layout
+\setstocksize{234mm}{156mm} % Page size
+\settrimmedsize{\stockheight}{\stockwidth}{*}
+\setbinding{1.4cm}
+\setlrmarginsandblock{1.4cm}{2.5cm}{*} % {spine}{edge}{ratio}
+\setulmarginsandblock{2.5cm}{3.5cm}{*}
+\checkandfixthelayout
+
+%%% Packages
+\usepackage[]{microtype}
+\usepackage[english]{babel}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage{ebgaramond}
+% \usepackage{lmodern} % Alternate font
+\usepackage[utf8]{inputenc}
+\usepackage{verse}
+
+% For demo purposes, safe to remove
+\usepackage{lipsum}
+
+\renewcommand{\afterpartskip}{\vfil}
+
+\nopartblankpage
+\linespread{1.25}
+\title{My Book Title}
+\author{Author 'S. Name}
+\date{}
+
+% Couple of useful commands for inserting a vertical break with a couple of asterisks to signify a change in time or perspective. A simple whitespace gap can be lost if compiling out to an EPUB.
+\newcommand{\timeskip}{%
+  \begin{center}
+    \vspace{12pt}
+    *
+    \vspace{12pt}
+  \end{center}}
+\newcommand{\perspectivechange}{%
+  \begin{center}
+    \vspace{12pt}
+    *\qquad*\qqaud*
+    \vspace{12pt}
+  \end{center}}
+
+\begin{document}
+  \createmark{chapter}{both}{nonumber}{}{}
+
+  \pagenumbering{gobble}
+  \maketitle
+  \cleartooddpage
+  \input{acknowledgements.tex}
+  \cleartooddpage
+  \tableofcontents
+  \newpage
+
+  \book*{My Book Title}
+
+  \frontmatter
+  % Can also put acknowledgements, etc. here. 
+
+  \mainmatter
+
+  % If attempting to insert a prologue before the first part without upsetting the page numbering:    
+  %\pagenumbering{gobble}
+  %\cleartooddpage
+  %\chapter*{My Prologue Name}
+  %\chaptermark{My Prologue Name}
+  %\addcontentsline{toc}{chapter}{My Prologue Name}
+  %\pagenumbering{roman}
+  %\input{prologue.tex}
+  %\newpage
+  %\pagenumbering{gobble}
+
+  \newpage
+  \part{Name of Part One}
+  \begin{center}
+    \textnormal{\textit{Some Flavour Text}}
+    \vfil
+  \end{center}
+  
+  \chapter{My First Chapter}
+  \pagenumbering{arabic}
+  \input{dummychapter1.tex}
+
+  \chapter{My Second Chapter}
+  \input{dummychapter2.tex}
+
+  % If you don't want the pages at the end of a part to count towards the page numbering...
+  \newpage
+  \newcounter{oldpage}
+  \setcounter{oldpage}{\value{page}}
+  \pagenumbering{gobble}
+  \chapter*{}
+  \begin{vplace}[0.5]
+    \begin{center}
+      \textnormal{\textit{End of Part 1}}
+    \end{center}
+  \end{vplace}
+
+  \newpage
+  \part{Name of Part Two}
+  \begin{center}
+    Mary had a little lamb,\\
+    She tied it to a pylon,\\
+    10,000 volts shot up its bum,\\
+    And turned its wool to nylon
+  \end{center}
+  \vfil
+  \newpage
+  \pagenumbering{arabic}
+  % Continue from the page number at the end of the last part
+  \addtocounter{page}{\value{oldpage}}
+
+  \chapter{My Third Chapter}
+  \input{dummychapter3.tex}
+
+  % The End
+  \newpage
+  \pagenumbering{gobble}
+  \chapter*{}
+  \begin{vplace}[0.5]
+    \begin{center}
+      \textnormal{\textit{Fin}}
+    \end{center}
+  \end{vplace}
+
+\end{document}
